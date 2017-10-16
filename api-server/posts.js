@@ -22,6 +22,16 @@ const defaultData = {
     category: 'redux',
     voteScore: -5,
     deleted: false
+  },
+  "6ni6ok3ym7mf1p33lnaz": {
+    id: '6ni6ok3ym7mf1p33lnaz',
+    timestamp: 1468379767190,
+    title: 'Learn Redux in 10000 hours!',
+    body: 'To be an expert, you need a lot of practices.',
+    author: 'thing3',
+    category: 'redux',
+    voteScore: 5,
+    deleted: false
   }
 }
 
