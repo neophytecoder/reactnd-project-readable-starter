@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import * as ForumAPI from '../utils/ForumAPI';
 import { CATEGORIES } from "../stateConstants";
-import { setCategories } from "./actions";
+import { setCategories } from "../Category/actions";
 
 class NavComponent extends Component {
   render() {

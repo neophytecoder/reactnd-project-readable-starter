@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import NavComponent from '../Nav';
-import HomeComponent from '../Home'
-import CategoryComponent from '../Home/Category'
+import { Switch } from 'react-router'
+import NavComponent from '../Nav'
+import HomeContainerComponent from '../Home'
+// import CategoryComponent from '../Home/Category'
+// import PostComponent from '../Post'
+// import CreatePostComponent from '../Home/CreatePost'
 
 class App extends Component {
   render() {
@@ -10,11 +13,18 @@ class App extends Component {
     return (
       <div>
         <NavComponent />
-        <Route exact path={match.url} component={HomeComponent} />
-        <Route path="/category/:categoryName" component={CategoryComponent} />
+        <Switch>
+          <Route path="/" component={HomeContainerComponent} />
+        </Switch>
       </div>
     );
   }
 }
+
+// <Switch>
+//
+//   <Route path="/category/:categoryName" component={CategoryComponent} />
+// </Switch>
+//<Route path="/post" component={PostComponent} />
 
 export default App;

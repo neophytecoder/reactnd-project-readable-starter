@@ -6,7 +6,8 @@ if (!token)
 
 const headers = {
   'Accept': 'application/json',
-  'Authorization': token
+  'Authorization': token,
+  'content-type': 'application/json'
 };
 
 export const getAllCategories = () => {
@@ -24,3 +25,31 @@ export const getAllPostsWithCategory = (category) => {
   return fetch(`${api}/${category}/posts`, {headers})
     .then(res => res.json())
 };
+
+export const getPost = (id) => {
+  return fetch(`${api}/posts/${id}`, {headers})
+    .then(res => res.json())
+};
+
+export const getAllComments = (id) => {
+  return fetch(`${api}/posts/${id}/comments`, {headers})
+    .then(res => res.json())
+};
+
+export const post = (post) => {
+  const body = JSON.stringify(post);
+  return fetch(`${api}/posts`, {
+        method:"POST",
+        headers,
+        body
+      });
+}
+
+export const editPost = (post) => {
+  const body = JSON.stringify(post);
+  return fetch(`${api}/posts`, {
+        method:"PUT",
+        headers,
+        body
+      });
+}

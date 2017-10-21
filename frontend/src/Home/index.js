@@ -1,16 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Switch, Route } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import { CATEGORIES } from '../stateConstants'
-import { setPosts } from '../ListPosts/actions'
+import { addPost } from '../Post/actions'
 import * as ForumAPI from '../utils/ForumAPI'
-import ListPostsComponent from '../ListPosts'
+import ListComponent from "../UI/List"
+import SortedListComponent from "../UI/SortedList"
+import PostComponent from "../Post/PostComponent"
+import CategoryComponent from "./Category"
 
-class HomeComponent extends Component {
+class HomeContainerComponent extends Component {
   render() {
+    console.log("HomeContainerComponent", this.props);
+    const SortedListPostComponent = SortedListComponent(PostComponent, this.props.posts);
+    const ListPostComponent = ListComponent(PostComponent, this.props.posts);
+    const { match } = this.props;
     return (
       <div>
-        <ListPostsComponent />
+        <Link to="/post/create">Submit a new post</Link>
+        <Switch>
+          <Route path="/category/:category" component={CategoryComponent} />
+          <Route path="/:sort" component={SortedListPostComponent} />
+          <Route exact path={match.url} component={ListPostComponent} />
+        </Switch>
       </div>
     );
   }
@@ -18,20 +32,22 @@ class HomeComponent extends Component {
   componentDidMount() {
     ForumAPI.getAllPosts()
         .then(posts => {
-          console.log("Home finished", posts);
-          this.props.setPosts(posts);
+          this.props.addPosts(posts);
         });
   }
 }
 
-
 const mapStateToProps = (state, ownProps) => ({
-  categories: state[CATEGORIES],
-  ...ownProps
-})
+  posts: state.posts,
+  ...ownProps,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  setPosts: (posts) => dispatch(setPosts(posts)),
+  addPosts: (posts) => {
+    posts.map(post => {
+      dispatch(addPost(post))
+    })
+  },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainerComponent);

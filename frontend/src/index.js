@@ -5,17 +5,23 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 
-import {categoryReducers} from "./Nav/reducers"
-import {postReducers} from "./ListPosts/reducers"
-import {CATEGORIES, POSTS} from './stateConstants'
+import {categoryReducers} from "./Category/reducers"
+import {postReducers} from "./Post/reducers"
+import {commentReducers} from './Comment/reducers'
+import {CATEGORIES, POSTS, COMMENTS} from './stateConstants'
 import App from './App/App'
 
-const store = createStore(combineReducers({[CATEGORIES]: categoryReducers, [POSTS]: postReducers}));
+const store = createStore(
+  combineReducers({
+    [CATEGORIES]: categoryReducers,
+    [POSTS]: postReducers,
+    [COMMENTS]: commentReducers,
+  }, ));
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={App} />
+      <App />
     </BrowserRouter>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();
