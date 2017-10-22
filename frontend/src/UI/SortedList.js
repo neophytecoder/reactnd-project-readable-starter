@@ -1,22 +1,21 @@
 import React, { Component } from 'react'
 import ListComponent from "./List"
+import {sortBy} from 'sort-by'
 
 const SortedListComponent = (ItemComponent, data) => {
   return class SortedListItemsComponent extends Component {
     render() {
       console.log("SortedListItemsComponent", this.props);
       const { sort } = this.props.match.params;
-      let sortedData;
       switch (sort) {
         case "new":
-          sortedData = data.sort((dataOne, dataTwo) => dataTwo.timestamp - dataOne.timestamp);
+          data.sort((dataOne, dataTwo) => dataTwo.timestamp - dataOne.timestamp);
           break;
         case "hot":
-          sortedData = data.sort((dataOne, dataTwo) => dataTwo.votescore - dataOne.votescore);
-        default:
-          sortedData = data;
+          data.sort((dataOne, dataTwo) => dataTwo.voteScore - dataOne.voteScore);
       }
-      const ListPostComponent = ListComponent(ItemComponent, sortedData);
+      console.log(sort, data);
+      const ListPostComponent = ListComponent(ItemComponent, data);
 
       return (
          <ListPostComponent {...this.props} />
