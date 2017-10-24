@@ -15,7 +15,7 @@ export const postReducers = (state = [], action) => {
       const filteredDifferentPost = state.filter((post) => post.id !== action.post.id);
       return [...filteredDifferentPost, action.post];
     case DELETE_POST:
-      return [ ...state, {...action.post, id: Utils.makeUniqueId(20)} ];
+      return state.filter(post => post.id !== action.postId);
     default:
       return state;
   }

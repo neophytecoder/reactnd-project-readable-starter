@@ -14,6 +14,10 @@ class PostComponent extends Component {
           {timeStampToDate(post.timestamp)} by {post.author} to {post.category}
           <p><button onClick={() => this.props.upVote(post) }>Thumbs up</button>
           <button onClick={() => this.props.downVote(post) }>Thumbs down</button></p>
+          <div>
+            <div><Link to={`/post/edit/${post.id}`}>edit</Link></div>
+            <div><Link to={`/post/delete/${post.id}`}>remove</Link></div>
+          </div>
       </div>
     )
   }

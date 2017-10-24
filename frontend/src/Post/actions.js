@@ -14,9 +14,9 @@ export const editPost = (post) => ({
   post
 })
 
-export const deletePost = (post) => ({
+export const deletePost = (postId) => ({
   type: DELETE_POST,
-  post
+  postId
 })
 
 export const votePost = (post, option) => {

@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import ListPostContainerComponent from './ListPostContainerComponent'
-import PostContainerComponent from '../Post/PostContainerComponent'
+import PostContainerComponent from '../Post'
 
 class HomeContainerComponent extends Component {
   render() {
@@ -14,7 +14,7 @@ class HomeContainerComponent extends Component {
       <div>
         <Switch>
           <Route path="/post" component={PostContainerComponent} />
-          <Route exact path={match.url} component={ListPostContainerComponent} />
+          <Route path={match.url} component={ListPostContainerComponent} />
         </Switch>
       </div>
     );
