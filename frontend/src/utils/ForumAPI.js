@@ -42,7 +42,8 @@ export const post = (post) => {
         method:"POST",
         headers,
         body
-      });
+      })
+      .then(res => res.json());
 }
 
 export const vote = (post, option) => {

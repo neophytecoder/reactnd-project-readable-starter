@@ -28,3 +28,12 @@ export const votePost = (post, option) => {
       })
   }
 }
+
+export const findPostAsync = (postId) => (dispatch) => {
+  ForumAPI.getPost(postId)
+    .then(post => {
+      console.log(post);
+      dispatch(addPost(post));
+      return post;
+    });
+}
