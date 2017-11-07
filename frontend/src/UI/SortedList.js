@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import ListComponent from "./List"
 import {sortBy} from 'sort-by'
 
-const SortedListComponent = (ItemComponent, data) => {
+const SortedListComponent = (ItemComponent, data, sort = undefined) => {
   return class SortedListItemsComponent extends Component {
     render() {
       console.log("SortedListItemsComponent", this.props);
-      const { sort } = this.props.match.params;
+      if (!sort) {
+         sort  = this.props.match.params.sort;
+      }
+
       switch (sort) {
         case "new":
           data.sort((dataOne, dataTwo) => dataTwo.timestamp - dataOne.timestamp);

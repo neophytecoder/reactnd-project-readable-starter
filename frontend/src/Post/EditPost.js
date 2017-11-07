@@ -26,7 +26,7 @@ class EditPostComponent extends Component {
     ForumAPI.editPost(post).then((data) => {
       console.log(data);
       this.props.editPost(data);
-      this.props.history.push('/');
+      this.props.history.goBack();
     });
   }
 

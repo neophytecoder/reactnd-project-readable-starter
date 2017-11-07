@@ -15,11 +15,15 @@ class ListPostContainerComponent extends Component {
   render() {
     console.log("HomeContainerComponent", this.props);
     const SortedListPostComponent = SortedListComponent(PostComponent, this.props.posts);
-    const ListPostComponent = ListComponent(PostComponent, this.props.posts);
+    const ListPostComponent = SortedListComponent(PostComponent, this.props.posts, "hot");
     const { match } = this.props;
     return (
       <div>
         <Link to="/post/create">Submit a new post</Link>
+        <div>
+          <Link to={`/hot`}>hot</Link>
+          <Link to={`/new`}>new</Link>
+        </div>
         <Switch>
           <Route path="/category/:category" component={CategoryComponent} />
           <Route path="/:sort" component={SortedListPostComponent} />

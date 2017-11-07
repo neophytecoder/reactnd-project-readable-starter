@@ -72,3 +72,32 @@ export const deletePost = (postId) => {
       })
       .then(res => res.json());
 }
+
+export const postComment = (comment) => {
+  const body = JSON.stringify(comment);
+  return fetch(`${api}/comments`, {
+        method:"POST",
+        headers,
+        body
+      })
+      .then(res => res.json());
+}
+
+export const voteComment = (commentId, option) => {
+  const body = JSON.stringify({option});
+  return fetch(`${api}/comments/${commentId}`, {
+        method:"POST",
+        headers,
+        body})
+    .then(res => res.json());
+}
+
+export const editComment = (comment) => {
+  const body = JSON.stringify({author: comment.author, body: comment.body, timestamp: comment.timestamp});
+  return fetch(`${api}/comments/${comment.id}`, {
+        method:"PUT",
+        headers,
+        body
+      })
+      .then(res => res.json());
+}

@@ -12,7 +12,9 @@ class PostComponent extends Component {
       <div>
           <h2><Link to={`/post/${post.id}`}>{post.title}</Link></h2>
           {timeStampToDate(post.timestamp)} by {post.author} to {post.category}
-          <p><button onClick={() => this.props.upVote(post) }>Thumbs up</button>
+          <p>
+          Vote: {post.voteScore}
+          <button onClick={() => this.props.upVote(post) }>Thumbs up</button>
           <button onClick={() => this.props.downVote(post) }>Thumbs down</button></p>
           <div>
             <div><Link to={`/post/edit/${post.id}`}>edit</Link></div>
