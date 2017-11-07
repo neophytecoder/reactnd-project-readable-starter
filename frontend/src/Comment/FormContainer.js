@@ -39,7 +39,10 @@ class EditCommentContainer extends Component {
     };
     console.log("onSubmit", comment);
     ForumAPI.editComment(comment)
-      .then(comment => this.props.editComment(comment));
+      .then(comment => {
+        console.log("EditCommentContainer", comment);
+        this.props.editComment(comment);
+      });
   }
 
   render() {

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { findCommentsAsync } from '../Comment/actions'
 import { findPostAsync } from './actions'
-import CommentComponent from '../Comment'
+import EditableCommentComponent from '../Comment/EditableComment'
 import ListComponent from '../UI/List'
 import SortedListComponent from '../UI/SortedList'
 import {timeStampToDate} from '../utils'
@@ -14,8 +14,8 @@ import {CreateCommentContainerComponent} from '../Comment/FormContainer'
 class PostDetailContainerComponent extends Component {
   render() {
     const { match } = this.props;
-    const ListCommentsComponent = ListComponent(CommentComponent, this.props.comments);
-    const SortedListCommentsComponent = SortedListComponent(CommentComponent, this.props.comments);
+    const ListCommentsComponent = SortedListComponent(EditableCommentComponent, this.props.comments, );
+    const SortedListCommentsComponent = SortedListComponent(EditableCommentComponent, this.props.comments);
     return (
       <div>
         {match.params.id} <br/>

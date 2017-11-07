@@ -101,3 +101,11 @@ export const editComment = (comment) => {
       })
       .then(res => res.json());
 }
+
+export const deleteComment = (commentId) => {
+  return fetch(`${api}/comments/${commentId}`, {
+        method:"DELETE",
+        headers
+      })
+      .then(res => res.json());
+}

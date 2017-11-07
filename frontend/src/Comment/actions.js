@@ -19,6 +19,14 @@ export const deleteComment = comment => ({
   comment
 })
 
+export const deleteCommentAsync = (comment) => (dispatch) => {
+  ForumAPI.deleteComment(comment.id)
+    .then((comment) => {
+      console.log(comment);
+      dispatch(deleteComment(comment));
+    });
+}
+
 export const findCommentsAsync = (postId) => (dispatch) => {
   ForumAPI.getAllComments(postId)
     .then((comments) => {
