@@ -55,7 +55,7 @@ class EditCommentContainer extends Component {
 const mapStateToProps = (state, ownProps) => (ownProps)
 const mapDispatchToProps = (dispatch) => ({
   addComment: (comment) => dispatch(addComments([comment])),
-  editComment: (comment) => dispatch(editComment([comment]))
+  editComment: (comment) => dispatch(editComment(comment))
 })
 
 export const CreateCommentContainerComponent = connect(mapStateToProps, mapDispatchToProps)(CreateCommentContainer);
