@@ -45,10 +45,17 @@ class PostDetailContainerComponent extends Component {
           }
         </div>
         <CreateCommentContainerComponent id={match.params.id} body="" author="" />
-        <div className="row">
-          <div className="col-1"><Link to={`${match.url}/hot`}>hot</Link></div>
-          <div className="col-1"><Link to={`${match.url}/new`}>new</Link></div>
-        </div>
+
+          <div className="dropdown show" style={{marginBottom: "1em"}}>
+            <a className="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort by
+            </a>
+
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <Link className="dropdown-item" to={`${match.url}/hot`}>Hot</Link>
+              <Link className="dropdown-item" to={`${match.url}/new`}>New</Link>
+            </div>
+          </div>
 
           <Switch>
             <Route path={`${match.url}/:sort`} component={SortedListCommentsComponent} />

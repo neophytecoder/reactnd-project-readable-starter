@@ -12,12 +12,32 @@ class FormComponent extends Component {
 
   render() {
     return (
-      <div>
-        <p>Title: <input onChange={this.changeFieldState("title")} value={this.state.title}/></p>
-        <p>Body: <input onChange={this.changeFieldState("body")} value={this.state.body}/></p>
-        <p>Category: <input onChange={this.changeFieldState("category")} value={this.state.category}/></p>
-        <p>Author: <input onChange={this.changeFieldState("author")} value={this.state.author}/></p>
-        <p><input type="submit" onClick={this.props.handleSubmit(this.state)} /></p>
+      <div className="row" style={{marginTop: '1em'}} >
+        <div className="form-group col-5">
+          <label>Title</label>
+          <input className="form-control" onChange={this.changeFieldState("title")}
+            value={this.state.title} placeholder="title"/>
+        </div>
+        <div className="w-100" />
+        <div className="form-group col-5">
+          <label>Body</label>
+          <input className="form-control" onChange={this.changeFieldState("body")} placeholder="body" value={this.state.body}/>
+        </div>
+        <div className="w-100" />
+        <div className="form-group col-5">
+          <label>Category</label>
+          <input className="form-control" onChange={this.changeFieldState("category")} placeholder="category" value={this.state.category}/>
+        </div>
+        <div className="w-100" />
+        <div className="form-group col-5">
+          <label>Author</label>
+          <input className="form-control" onChange={this.changeFieldState("author")} placeholder="author" value={this.state.author}/>
+        </div>
+
+        <div className="w-100" />
+        <div className="form-group col-5">
+          <input className="btn btn-primary" type="submit" onClick={this.props.handleSubmit(this.state)} />
+        </div>
       </div>
     )
   }

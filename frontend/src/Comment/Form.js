@@ -15,6 +15,15 @@ class CommentFormComponent extends Component {
     this.setState({[field]: event.target.value});
   }
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(this.state)(event);
+    this.setState({
+      body: "",
+      author: ""
+    });
+  }
+
   render() {
     return (
       <div className="row">
@@ -35,7 +44,7 @@ class CommentFormComponent extends Component {
           </div>
           <div className="w-100" />
           <div className="col-2 form-group">
-            <button className="btn btn-primary form-control" type="submit" onClick={this.props.onSubmit(this.state)} >
+            <button className="btn btn-primary form-control" type="submit" onClick={this.onSubmit} >
               Submit
             </button>
           </div>

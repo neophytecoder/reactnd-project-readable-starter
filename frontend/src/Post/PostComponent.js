@@ -26,7 +26,7 @@ class PostComponent extends Component {
                 <img src={arrowDown} width="36" height="36" />
             </button>
           </div>
-          <div className="col-9">
+          <div className="col-10">
             <h1><Link to={`/post/${post.id}`}>{post.title}</Link></h1>
             <h5>{timeStampToDate(post.timestamp)} by {post.author} to {post.category}</h5>
             <div className="row">

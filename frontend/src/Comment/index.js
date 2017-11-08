@@ -53,8 +53,8 @@ class CommentComponent extends Component {
           <div className="comment-body">{body}</div>
           <div className="comment-extras">by {author} at {timeStampToDate(timestamp)} with {voteScore}</div>
           <div className="row">
-            <div className="col-1"><a href="" onClick={this.editComment}>Edit</a></div>
-            <div className="col-1"><a href="" onClick={this.deleteComment(this.props.post)}>Delete</a></div>
+            <div className="col-1"><a href="" onClick={this.editComment}>edit</a></div>
+            <div className="col-1"><a href="" onClick={this.deleteComment(this.props.post)}>remove</a></div>
           </div>
         </div>
       </div>
