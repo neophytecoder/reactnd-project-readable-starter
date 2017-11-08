@@ -26,7 +26,10 @@ class CategoryComponent extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-  posts: state.posts,
+  posts: state.posts.map(post => {
+    const numberComments = state.comments.filter(comment => comment.parentId === post.id).length;
+    return {...post, numberComments};
+  }),
   ...ownProps,
 });
 
