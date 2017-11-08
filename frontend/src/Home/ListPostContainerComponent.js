@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { CATEGORIES } from '../stateConstants'
 import { addPost } from '../Post/actions'
+import { addComments } from '../Comment/actions'
 import * as ForumAPI from '../utils/ForumAPI'
 import ListComponent from "../UI/List"
 import SortedListComponent from "../UI/SortedList"
@@ -49,12 +50,18 @@ class ListPostContainerComponent extends Component {
     ForumAPI.getAllPosts()
         .then(posts => {
           this.props.addPosts(posts);
+          posts.map(post => {
+            ForumAPI.getAllComments(post.id).then(comments => this.props.addComments(comments))
+          });
         });
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  posts: state.posts,
+  posts: state.posts.map(post => {
+    const numberComments = state.comments.filter(comment => comment.parentId === post.id).length;
+    return {...post, numberComments};
+  }),
   ...ownProps,
 });
 
@@ -64,6 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(addPost(post))
     })
   },
+  addComments: (comments) => dispatch(addComments(comments))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListPostContainerComponent);

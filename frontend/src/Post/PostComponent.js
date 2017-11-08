@@ -28,7 +28,7 @@ class PostComponent extends Component {
           </div>
           <div className="col-10">
             <h1><Link to={`/post/${post.id}`}>{post.title}</Link></h1>
-            <h5>{timeStampToDate(post.timestamp)} by {post.author} to {post.category}</h5>
+            <h5>{timeStampToDate(post.timestamp)} by {post.author} to {post.category} with {post.numberComments} comments</h5>
             <div className="row">
               <div className="col-1"><Link to={`/post/edit/${post.id}`}>edit</Link></div>
               <div className="col-1"><Link to={`/post/delete/${post.id}`}>remove</Link></div>
