@@ -14,7 +14,7 @@ class DeletePostComponent extends Component {
     ForumAPI.deletePost(postId)
       .then(data => {
         this.props.delete(postId);
-        this.props.history.goBack();
+        this.props.history.push("/");
       });
   }
 }

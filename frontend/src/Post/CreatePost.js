@@ -22,7 +22,7 @@ class CreatePostComponent extends Component {
     console.log(post);
     ForumAPI.post(post).then((data) => {
       console.log(data);
-      this.props.addPost(post);
+      this.props.addPost(data);
       this.props.history.push('/');
     });
   }
