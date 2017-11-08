@@ -28,7 +28,41 @@
 
 .post-row {
   margin-bottom: 20px;
-  color: #BC8F8F	
+  font-size: 24px;
+  color: #BC8F8F;
+}
+
+.post-detail-title {
+  color: #1E90FF
+}
+
+.post-detail-extras {
+  color: #BC8F8F;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.post-detail-body {
+  font-size: 28px;
+  margin-bottom: 8px
+}
+
+.post-detail {
+  margin-bottom: 36px;
+  margin-top: 8px
+}
+
+.comment {
+  margin-top: 12px;
+  margin-bottom: 12px
+}
+
+.comment-extras {
+  color: #BC8F8F;
+}
+
+.comment-body {
+  font-size: 24px
 }
 
 @keyframes App-logo-spin {

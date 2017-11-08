@@ -17,16 +17,28 @@ class CommentFormComponent extends Component {
 
   render() {
     return (
-      <div>
-          <div>
-              Body: <input onChange={this.onChange("body")}
-                  value={this.state.body} />
+      <div className="row">
+          <div className="col-7 form-group">
+            <label>Body</label>
+            <textarea className="form-control" aria-describedby="Body" rows="5"
+              placeholder="Enter comment" onChange={this.onChange("body")}
+              value={this.state.body} />
           </div>
-          <div>
-              Author: <input onChange={this.onChange("author")}
+          <div className="w-100" />
+          <div className="col-7 form-group">
+              <label>Author</label>
+              <input className="form-control"
+                aria-describedby="Author"
+                placeholder="Enter author"
+                onChange={this.onChange("author")}
                   value={this.state.author} />
           </div>
-        <div><input type="submit" onClick={this.props.onSubmit(this.state)} /></div>
+          <div className="w-100" />
+          <div className="col-2 form-group">
+            <button className="btn btn-primary form-control" type="submit" onClick={this.props.onSubmit(this.state)} >
+              Submit
+            </button>
+          </div>
       </div>
     );
   }

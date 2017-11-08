@@ -4,35 +4,57 @@ import { Switch, Route } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import { findCommentsAsync } from '../Comment/actions'
-import { findPostAsync } from './actions'
+import { findPostAsync, votePost } from './actions'
 import EditableCommentComponent from '../Comment/EditableComment'
 import ListComponent from '../UI/List'
 import SortedListComponent from '../UI/SortedList'
 import {timeStampToDate} from '../utils'
 import {CreateCommentContainerComponent} from '../Comment/FormContainer'
+import '../Home/App.css'
+import * as  arrowUp  from '../Entypo/Entypo/arrow-up.svg'
+import * as  arrowDown  from '../Entypo/Entypo/arrow-down.svg'
 
 class PostDetailContainerComponent extends Component {
   render() {
-    const { match } = this.props;
-    const ListCommentsComponent = SortedListComponent(EditableCommentComponent, this.props.comments, );
-    const SortedListCommentsComponent = SortedListComponent(EditableCommentComponent, this.props.comments);
+    const { match, post, comments } = this.props;
+    const ListCommentsComponent = SortedListComponent(EditableCommentComponent,
+      this.props.comments, "hot");
+    const SortedListCommentsComponent = SortedListComponent(EditableCommentComponent,
+      this.props.comments);
+
     return (
-      <div>
-        {match.params.id} <br/>
-        {
-          this.props.post &&
-          <PostDetailComponent {...this.props.post}
-            totalComment={this.props.comments.length} />
-        }
-        <CreateCommentContainerComponent id={match.params.id} body="" author="" />
-        <div>
-          <Link to={`${match.url}/hot`}>hot</Link>
-          <Link to={`${match.url}/new`}>new</Link>
+      <div className="container">
+        <div className="row post-detail">
+          <div className="col-1">
+            <button type="button" className="btn btn-primary"
+              onClick={() => this.props.upVote(post) }>
+                <img src={arrowUp} width="36" height="36" />
+            </button>
+            <div className="w-100" />
+            <div className={`text-center VoteSize`}>{post && post.voteScore}</div>
+            <div className="w-100" />
+            <button type="button" className="btn btn-danger"
+              onClick={() => this.props.downVote(post) }>
+                <img src={arrowDown} width="36" height="36" />
+            </button>
+          </div>
+          {
+            post &&
+            <PostDetailComponent {...post}
+              totalComment={this.props.comments.length} />
+          }
         </div>
-        <Switch>
-          <Route path={`${match.url}/:sort`} component={SortedListCommentsComponent} />
-          <Route exact path={match.url} component={ListCommentsComponent} />
-        </Switch>
+        <CreateCommentContainerComponent id={match.params.id} body="" author="" />
+        <div className="row">
+          <div className="col-1"><Link to={`${match.url}/hot`}>hot</Link></div>
+          <div className="col-1"><Link to={`${match.url}/new`}>new</Link></div>
+        </div>
+
+          <Switch>
+            <Route path={`${match.url}/:sort`} component={SortedListCommentsComponent} />
+            <Route exact path={match.url} component={ListCommentsComponent} />
+          </Switch>
+
       </div>
     )
   }
@@ -46,16 +68,18 @@ class PostDetailContainerComponent extends Component {
 
 const PostDetailComponent = (props) => {
   return (
-    <div>
-      <h1>{props.title}</h1>
-      <p>by {props.author}, at {timeStampToDate(props.timestamp)}, vote {props.voteScore}</p>
-      <h3>{props.body}</h3>
-      <div>
-        <div><Link to={`/post/edit/${props.id}`}>edit</Link></div>
-        <div><Link to={`/post/delete/${props.id}`}>remove</Link></div>
+    <div className="col-9">
+      <h1><div className="post-detail-title">{props.title}</div></h1>
+      <div className="w-100" />
+      <div className="post-detail-extras">
+        by {props.author}, at {timeStampToDate(props.timestamp)}
       </div>
-      <div>#Comments: {props.totalComment}</div>
-      -----------------------
+      <div className="post-detail-body">{props.body}</div>
+      <div className="row">
+        <div className="col-1"><Link to={`/post/edit/${props.id}`}>edit</Link></div>
+        <div className="col-1"><Link to={`/post/delete/${props.id}`}>remove</Link></div>
+        <div className="col-3 font-weight-bold">{props.totalComment} comments</div>
+      </div>
     </div>
   )
 }
@@ -76,7 +100,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   findComments: (postId) => dispatch(findCommentsAsync(postId)),
-  findPost: postId => dispatch(findPostAsync(postId))
+  findPost: postId => dispatch(findPostAsync(postId)),
+  upVote: (post) => dispatch(votePost(post, "upVote")),
+  downVote: (post) => dispatch(votePost(post, "downVote"))
 })
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetailContainerComponent);
