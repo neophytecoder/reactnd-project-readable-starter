@@ -4,15 +4,18 @@ import { Switch } from 'react-router'
 import NavComponent from '../Nav'
 import HomeContainerComponent from '../Home'
 
+
 class App extends Component {
   render() {
     const { match } = this.props;
     return (
       <div>
-        <NavComponent />
-        <Switch>
-          <Route path="/" component={HomeContainerComponent} />
-        </Switch>
+          <NavComponent />
+          <main className='container'>
+            <Switch>
+              <Route path="/" component={HomeContainerComponent} />
+            </Switch>
+          </main>
       </div>
     );
   }

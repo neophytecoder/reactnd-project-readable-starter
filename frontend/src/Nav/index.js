@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
 
 import * as ForumAPI from '../utils/ForumAPI';
@@ -10,23 +11,34 @@ class NavComponent extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-        <ul>
-        <li key="home">
-          <Link to="/">Home</Link>
-        </li>
-        {
-          this.props.categories.map(
-            category => (
-              <li key={category.name}>
-                <Link to={`/category/${category.path}`}>
-                  {category.name}
-                </Link>
-              </li>
-            ))
-        }
-        </ul>
-      </div>
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <button className="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#categoryNav"aria-controls="categoryNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+        </button>
+        <Link className="navbar-brand" to={this.props.match.url} >Raddish</Link>
+
+
+        <div className="collapse navbar-collapse" id="categoryNav">
+          <div className="navbar-nav">
+            <div className="nav-item active" key="home">
+              <Link className="nav-link" to={this.props.match.url}>Home <span className="sr-only">(current)</span></Link>
+            </div>
+
+            {
+              this.props.categories.map(
+                category => (
+                  <div key={category.name} className="nav-item">
+                    <Link className="nav-link" to={`/category/${category.path}`}>
+                      {category.name}
+                    </Link>
+                  </div>
+                ))
+            }
+          </div>
+        </div>
+      </nav>
     )
   }
 
@@ -40,7 +52,8 @@ class NavComponent extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    categories: state[CATEGORIES]
+    categories: state[CATEGORIES],
+    ...props
   }
 };
 
@@ -48,4 +61,4 @@ const mapDispatchToProps = (dispatch) => ({
   setCategories: (categories) => dispatch(setCategories(categories))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavComponent));
