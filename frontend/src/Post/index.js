@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router'
 import CreatePostComponent from './CreatePost'
 import EditPostComponent from './EditPost'
 import DeletePostComponent from './DeletePost'
-import PostDetailContainerComponent from './PostDetailContainerComponent'
+import CheckedPostDetailContainerComponent from './CheckedPostDetailContainerComponent'
 
 class PostContainerComponent extends Component {
   render() {
@@ -14,7 +14,7 @@ class PostContainerComponent extends Component {
           <Route path="/post/create" component={CreatePostComponent} />
           <Route path="/post/edit/:id" component={EditPostComponent} />
           <Route path="/post/delete/:id" component={DeletePostComponent} />
-          <Route path="/post/:id" component={PostDetailContainerComponent} />
+          <Route path="/post/:id" component={CheckedPostDetailContainerComponent} />
         </Switch>
       </div>
     )

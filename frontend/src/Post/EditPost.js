@@ -13,6 +13,7 @@ class EditPostComponent extends Component {
       props.history.push('/');
     }
     this.state = {post: props.post};
+    this.enabled = {author: false, category: false};
   }
 
   submitPost = (formValues) => (event) => {
@@ -31,7 +32,7 @@ class EditPostComponent extends Component {
   }
 
   render() {
-    return <FormComponent post={this.state.post} handleSubmit={this.submitPost} />
+    return <FormComponent post={this.state.post} handleSubmit={this.submitPost} enabled={this.enabled}  />
   }
 }
 

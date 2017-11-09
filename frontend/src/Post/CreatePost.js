@@ -10,6 +10,7 @@ class CreatePostComponent extends Component {
   constructor(props) {
     super(props);
     this.post = {title: "", body: "", author: "", category: ""};
+    this.enabled = {author: true, category: true};
   }
 
   submitPost = (formValues) => (event) => {
@@ -28,7 +29,7 @@ class CreatePostComponent extends Component {
   }
 
   render() {
-    return <FormComponent post={this.post} handleSubmit={this.submitPost} />
+    return <FormComponent post={this.post} handleSubmit={this.submitPost} enabled={this.enabled} />
   }
 }
 

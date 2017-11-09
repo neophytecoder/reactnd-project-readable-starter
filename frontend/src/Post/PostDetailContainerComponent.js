@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Switch, Route } from 'react-router'
+import { Switch, Route, withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import { findCommentsAsync } from '../Comment/actions'
@@ -113,4 +113,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetailContainerComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostDetailContainerComponent));

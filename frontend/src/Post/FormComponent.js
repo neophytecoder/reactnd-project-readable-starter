@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import SelectCategoryDropdown from '../UI/SelectCategoryDropdown'
+
 class FormComponent extends Component {
   constructor(props) {
     super(props);
@@ -26,12 +28,12 @@ class FormComponent extends Component {
         <div className="w-100" />
         <div className="form-group col-5">
           <label>Category</label>
-          <input className="form-control" onChange={this.changeFieldState("category")} placeholder="category" value={this.state.category}/>
+          <SelectCategoryDropdown onChange={this.changeFieldState("category")} value={this.state.category} disabled={!this.props.enabled.category} />
         </div>
         <div className="w-100" />
         <div className="form-group col-5">
           <label>Author</label>
-          <input className="form-control" onChange={this.changeFieldState("author")} placeholder="author" value={this.state.author}/>
+          <input className="form-control" onChange={this.changeFieldState("author")} placeholder="author" value={this.state.author} disabled={!this.props.enabled.author}/>
         </div>
 
         <div className="w-100" />
