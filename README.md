@@ -4,9 +4,9 @@ Readable is the second ReactJS project from Udacity. The purpose of the project 
 
 This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
 
-<img src="images/home.png" />
-<img src="images/category.png" />
-<img src="images/post detail.png" />
+<img src="images/home.png" width="45%" />
+<img src="images/category.png" width="45%"  />
+<img src="images/post detail.png" width="45%"  />
 
 ## Contributing
 

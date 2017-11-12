@@ -17,7 +17,7 @@ class ListPostContainerComponent extends Component {
     console.log("HomeContainerComponent", this.props);
     const SortedListPostComponent = SortedListComponent(PostComponent, this.props.posts);
     const ListPostComponent = SortedListComponent(PostComponent, this.props.posts, "hot");
-    const { match } = this.props;
+    const { match, location } = this.props;
     return (
       <div className="row" style={{marginTop: '1em'}}>
         <div className="col-10">
@@ -27,10 +27,11 @@ class ListPostContainerComponent extends Component {
               Sort by
             </a>
 
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <Link className="dropdown-item" to={`/hot`}>Hot</Link>
-              <Link className="dropdown-item" to={`/new`}>New</Link>
-            </div>
+            <Switch>
+              <Route path="/category/:category" component={SortByComponent} />
+              <Route path={match.url} component={SortByComponent} />
+            </Switch>
+
           </div>
 
           <Switch>
@@ -54,6 +55,17 @@ class ListPostContainerComponent extends Component {
             ForumAPI.getAllComments(post.id).then(comments => this.props.addComments(comments))
           });
         });
+  }
+}
+
+class SortByComponent extends Component {
+  render() {
+    return(
+      <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <Link className="dropdown-item" to={`${this.props.match.url}/hot`}>Hot</Link>
+        <Link className="dropdown-item" to={`${this.props.match.url}/new`}>New</Link>
+      </div>
+    )
   }
 }
 
