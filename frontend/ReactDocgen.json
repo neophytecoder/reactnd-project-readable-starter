@@ -1,0 +1,231 @@
+{
+  "src/App/App.js": {
+    "description": "",
+    "displayName": "App",
+    "methods": []
+  },
+  "src/Comment/EditableComment.js": {
+    "description": "",
+    "displayName": "EditableCommentComponent",
+    "methods": [
+      {
+        "name": "editComment",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ]
+  },
+  "src/Comment/Form.js": {
+    "description": "",
+    "displayName": "CommentFormComponent",
+    "methods": [
+      {
+        "name": "onChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "field",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onSubmit",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "event",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ]
+  },
+  "src/Comment/index.js": {
+    "description": "",
+    "displayName": "CommentComponent",
+    "methods": [
+      {
+        "name": "upVote",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "commentId",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "downVote",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "commentId",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "editComment",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "event",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "deleteComment",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "comment",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ]
+  },
+  "src/CreateEdit/CreatePostComponent.js": {
+    "description": "",
+    "displayName": "CreatePost",
+    "methods": []
+  },
+  "src/Home/Category.js": {
+    "description": "",
+    "displayName": "CategoryComponent",
+    "methods": []
+  },
+  "src/Home/ListPostContainerComponent.js": {
+    "description": "",
+    "displayName": "ListPostContainerComponent",
+    "methods": []
+  },
+  "src/Home/index.js": {
+    "description": "",
+    "displayName": "HomeContainerComponent",
+    "methods": []
+  },
+  "src/Nav/index.js": {
+    "description": "",
+    "displayName": "NavComponent",
+    "methods": []
+  },
+  "src/Post/CheckedPostDetailContainerComponent.js": {
+    "description": "",
+    "displayName": "CheckedPostDetailContainerComponent",
+    "methods": []
+  },
+  "src/Post/Comments.js": {
+    "description": "",
+    "displayName": "CommentsComponent",
+    "methods": [
+      {
+        "name": "obtainComments",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "id",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ]
+  },
+  "src/Post/CreatePost.js": {
+    "description": "",
+    "displayName": "CreatePostComponent",
+    "methods": [
+      {
+        "name": "submitPost",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "formValues",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ]
+  },
+  "src/Post/DeletePost.js": {
+    "description": "",
+    "displayName": "DeletePostComponent",
+    "methods": []
+  },
+  "src/Post/EditPost.js": {
+    "description": "",
+    "displayName": "EditPostComponent",
+    "methods": [
+      {
+        "name": "submitPost",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "formValues",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ]
+  },
+  "src/Post/FormComponent.js": {
+    "description": "",
+    "displayName": "FormComponent",
+    "methods": [
+      {
+        "name": "changeFieldState",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "fieldName",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ]
+  },
+  "src/Post/PostComponent.js": {
+    "description": "",
+    "displayName": "PostComponent",
+    "methods": []
+  },
+  "src/Post/PostDetailContainerComponent.js": {
+    "description": "",
+    "displayName": "PostDetailContainerComponent",
+    "methods": []
+  },
+  "src/Post/index.js": {
+    "description": "",
+    "displayName": "PostContainerComponent",
+    "methods": []
+  },
+  "src/UI/SelectCategoryDropdown.js": {
+    "description": "",
+    "displayName": "SelectCategoryDropdown",
+    "methods": []
+  }
+}
